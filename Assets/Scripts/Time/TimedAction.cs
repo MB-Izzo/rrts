@@ -1,56 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TimedAction {
 
 	public float time_started { get; private set; }
+	public DateTime dateOnCreation;
+	public float delta;
 	public float duration { get; private set; }
 	public float action_ratio { get; private set; }
+	private float time_progress;
 
-	private float _startTime;
-	private bool _isCompleted;
-	private readonly System.Action<float> _onUpdate;
-
-	public TimedAction(float time_started, float duration, System.Action<float> _onUpdate)
+	public TimedAction(float time_started, float duration, DateTime date)
 	{
 		this.time_started = time_started;
+		this.dateOnCreation = date;
 		this.duration = duration;
-		this._onUpdate = _onUpdate;
-		this._startTime = GetWorldTime ();
+
 	}
 
 	public void Update(float delta_time)
 	{
-		if (this._isCompleted)
-		{
-			return;
-		}
-
-		if (this._onUpdate != null)
-		{
-			this._onUpdate (this.GetTimeElapsed());
-		}
+		this.time_progress += delta_time;
+		action_ratio = time_progress / duration;
 	}
 
-	// Get how many seconds have elapsed since the start of this timer.
-	private float GetTimeElapsed()
-	{
-		if (_isCompleted)
-		{
-			return this.duration;
-		}
-		return GetWorldTime () - _startTime;
-	}
-
-	private float GetWorldTime()
-	{
-		return Time.time;
-	}
-
-	// Between 0 and 1.
-	private float GetRatio()
-	{
-		GetTimeElapsed () / this.duration;
-	}
 }
