@@ -9,12 +9,12 @@ public class Testing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		tAction = TimeManager.CreateTimedAction (1000, DateTime.Now);
+		tAction = TimeManager.CreateTimedAction (10, DateTime.Now);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		tAction.Update(DateTime.Now);
-		Debug.Log (tAction.action_ratio);
+		Debug.Log (tAction.time_progress);
 	}
 }

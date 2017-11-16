@@ -21,7 +21,7 @@ public class TimedAction {
 	public void Update(DateTime new_date)
 	{
 		_delta = MsElapsed (new_date, last_date);
-		this.time_progress += _delta/10;
+		this.time_progress += _delta/1000f;
 		action_ratio = time_progress / duration;
 		last_date = new_date;
 	}
@@ -32,5 +32,3 @@ public class TimedAction {
 	}
 
 }
-
-//			timedAction.delta = DateInfo.TimeElapsedInSeconds (DateTime.Now, timedAction.dateOnCreation);
