@@ -6,24 +6,25 @@ public static class TimeManager {
 
 	private static List<TimedAction> timed_actions = new List<TimedAction>();
 
-	public static TimedAction CreateTimedAction(float duration, System.Action<float> onUpdate)
+	public static TimedAction CreateTimedAction(float duration)
 	{
-		TimedAction action = new TimedAction (Time.time, duration, onUpdate);
+		TimedAction action = new TimedAction (Time.time, duration);
 		timed_actions.Add (action);
 		return action;
 	}
 
-	private void Update()
-	{
-		this.UpdateAllTimedActions ();
-	}
-
-	private void UpdateAllTimedActions()
+	private void Update(float delta_time)
 	{
 		foreach (TimedAction timedActions in timed_actions)
 		{
-			timedActions.Update ();
-		}
+			timedActions.Update (delta_time);
+		}	
 	}
+		
+	// Between 0 and 1.
+	// private float GetRatio()
+	// {
+	//	(Time.time - time_started) / this.duration;
+	// }
 
 }
