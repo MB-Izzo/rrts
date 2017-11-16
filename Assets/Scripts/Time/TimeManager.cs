@@ -22,9 +22,4 @@ public static class TimeManager {
 		}	
 	}
 
-	public static double MsElapsed(DateTime a, DateTime b)
-	{
-		return a.Subtract (b).TotalMilliseconds;
-	}
-
 }
