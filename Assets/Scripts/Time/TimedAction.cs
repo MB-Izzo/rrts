@@ -5,25 +5,24 @@ using System;
 
 public class TimedAction {
 
-	public float time_started { get; private set; }
-	public DateTime dateOnCreation;
-	public float delta;
+	public DateTime time_started { get; private set; }
 	public float duration { get; private set; }
 	public float action_ratio { get; private set; }
 	private float time_progress;
+	private float delta;
 
-	public TimedAction(float time_started, float duration, DateTime date)
+	public TimedAction(float duration, DateTime date)
 	{
-		this.time_started = time_started;
-		this.dateOnCreation = date;
+		this.time_started = date;
 		this.duration = duration;
-
 	}
 
-	public void Update(float delta_time)
+	public void Update(DateTime date)
 	{
-		this.time_progress += delta_time;
+		this.time_progress += DateInfo.msElapsed(date, time_started);
 		action_ratio = time_progress / duration;
 	}
 
 }
+
+//			timedAction.delta = DateInfo.TimeElapsedInSeconds (DateTime.Now, timedAction.dateOnCreation);
