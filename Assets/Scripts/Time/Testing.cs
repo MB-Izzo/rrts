@@ -9,7 +9,7 @@ public class Testing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		tAction = TimeManager.CreateTimedAction (10, DateTime.Now);
+		tAction = TimeManager.CreateTimedAction (1000, DateTime.Now);
 	}
 	
 	// Update is called once per frame
