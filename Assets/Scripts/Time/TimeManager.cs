@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour {
+public static class TimeManager : MonoBehaviour {
+
+	public TimedAction CreateTimedAction(float duration)
+	{
+		return new TimedAction (Time.time, duration);
+	}
 
 	// Use this for initialization
 	void Start () {
