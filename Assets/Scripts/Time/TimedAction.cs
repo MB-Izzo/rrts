@@ -22,12 +22,11 @@ public class TimedAction {
 	{
 		_delta = MsElapsed (new_date, last_date);
 		this.time_progress += _delta/1000f;
-		action_ratio = time_progress / duration;
+		action_ratio = Mathf.Min ((float)time_progress / duration, 1f);
 		last_date = new_date;
-		Mathf.Min ((float)action_ratio, 1f);
 	}
-
-	public double MsElapsed(DateTime a, DateTime b)
+		
+	private double MsElapsed(DateTime a, DateTime b)
 	{
 		return a.Subtract (b).TotalMilliseconds;
 	}

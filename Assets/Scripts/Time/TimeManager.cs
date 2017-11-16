@@ -6,6 +6,7 @@ using System;
 public static class TimeManager {
 
 	private static List<TimedAction> timed_actions = new List<TimedAction>();
+	private static double secondsToAdd;
 
 	public static TimedAction CreateTimedAction(float duration, DateTime date)
 	{
@@ -18,8 +19,13 @@ public static class TimeManager {
 	{
 		foreach (TimedAction timedAction in timed_actions)
 		{
-			timedAction.Update (DateTime.Now);
+			timedAction.Update (DateTime.Now.AddSeconds(secondsToAdd));
 		}	
+	}
+
+	public static void AddSecondsHack (double s)
+	{
+		secondsToAdd += s;
 	}
 
 }
