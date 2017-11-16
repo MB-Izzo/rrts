@@ -15,9 +15,9 @@ public static class TimeManager {
 
 	private void Update(float delta_time)
 	{
-		foreach (TimedAction timedActions in timed_actions)
+		foreach (TimedAction timedAction in timed_actions)
 		{
-			timedActions.Update (delta_time);
+			timedAction.Update (delta_time);
 		}	
 	}
 		
