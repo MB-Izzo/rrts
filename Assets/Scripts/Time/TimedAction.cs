@@ -21,16 +21,14 @@ public class TimedAction {
 	public void Update(DateTime new_date)
 	{
 		_delta = MsElapsed (new_date, last_date);
-		this.time_progress += _delta/10;
-		action_ratio = time_progress / duration;
+		this.time_progress += _delta/1000f;
+		action_ratio = Mathf.Min ((float)time_progress / duration, 1f);
 		last_date = new_date;
 	}
-
-	public double MsElapsed(DateTime a, DateTime b)
+		
+	private double MsElapsed(DateTime a, DateTime b)
 	{
 		return a.Subtract (b).TotalMilliseconds;
 	}
 
 }
-
-//			timedAction.delta = DateInfo.TimeElapsedInSeconds (DateTime.Now, timedAction.dateOnCreation);
