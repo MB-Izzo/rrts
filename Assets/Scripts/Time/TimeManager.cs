@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class TimeManager : MonoBehaviour {
+public static class TimeManager {
 
-	public TimedAction CreateTimedAction(float duration)
+	private List<TimedAction> timed_actions;
+
+	public static TimedAction CreateTimedAction(float duration)
 	{
-		return new TimedAction (Time.time, duration);
+		TimedAction action = new TimedAction (Time.time, duration);
+		timed_actions.Add (action);
+		return action;
 	}
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
