@@ -5,10 +5,10 @@ using System;
 
 public static class DateInfo {
 	
-	public static float TimeElapsedInSeconds(DateTime a, DateTime b)
+	public static float msElapsed(DateTime a, DateTime b)
 	{
-		TimeSpan t = b.Subtract (a).TotalSeconds;
-		float s = t.Seconds;
-		return s;
+		TimeSpan t = b.Subtract (a).TotalMilliseconds;
+		float ms = t.TotalMilliseconds;
+		return ms;
 	}
 }

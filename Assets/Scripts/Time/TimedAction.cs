@@ -17,11 +17,10 @@ public class TimedAction {
 		this.duration = duration;
 	}
 
-	public void Update(float delta_time)
+	public void Update(DateTime date)
 	{
-		this.time_progress += delta_time;
+		this.time_progress += DateInfo.msElapsed(date, time_started);
 		action_ratio = time_progress / duration;
-		delta = DateInfo.TimeElapsedInSeconds (DateTime.Now, this.time_started);
 	}
 
 }

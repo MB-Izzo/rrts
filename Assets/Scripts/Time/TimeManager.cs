@@ -14,11 +14,11 @@ public static class TimeManager {
 		return action;
 	}
 
-	public static void Update(float delta_time)
+	public static void Update()
 	{
 		foreach (TimedAction timedAction in timed_actions)
 		{
-			timedAction.Update (delta_time);
+			timedAction.Update (DateTime.Now);
 		}	
 	}
 
