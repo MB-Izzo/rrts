@@ -7,9 +7,9 @@ public static class TimeManager {
 
 	private static List<TimedAction> timed_actions = new List<TimedAction>();
 
-	public static TimedAction CreateTimedAction(float duration, DateInfo date)
+	public static TimedAction CreateTimedAction(float duration, DateTime date)
 	{
-		TimedAction action = new TimedAction (duration, DateTime.Now);
+		TimedAction action = new TimedAction (duration, date);
 		timed_actions.Add (action);
 		return action;
 	}

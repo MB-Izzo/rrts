@@ -7,9 +7,10 @@ public class TimedAction {
 
 	public DateTime time_started { get; private set; }
 	public float duration { get; private set; }
-	public float action_ratio { get; private set; }
-	private float time_progress;
-	private float delta;
+	public double action_ratio { get; private set; }
+	public double time_progress { get; private set; }
+	public double _delta { get; private set; }
+	private DateTime last_date = DateTime.Now;
 
 	public TimedAction(float duration, DateTime date)
 	{
@@ -17,10 +18,17 @@ public class TimedAction {
 		this.duration = duration;
 	}
 
-	public void Update(DateTime date)
+	public void Update(DateTime new_date)
 	{
-		this.time_progress += DateInfo.msElapsed(date, time_started);
+		_delta = MsElapsed (new_date, last_date);
+		this.time_progress += _delta/10;
 		action_ratio = time_progress / duration;
+		last_date = new_date;
+	}
+
+	public double MsElapsed(DateTime a, DateTime b)
+	{
+		return a.Subtract (b).TotalMilliseconds;
 	}
 
 }
