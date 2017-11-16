@@ -24,6 +24,7 @@ public class TimedAction {
 		this.time_progress += _delta/1000f;
 		action_ratio = time_progress / duration;
 		last_date = new_date;
+		Mathf.Min ((float)action_ratio, 1f);
 	}
 
 	public double MsElapsed(DateTime a, DateTime b)
