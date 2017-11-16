@@ -9,16 +9,17 @@ public static class TimeManager {
 
 	public static TimedAction CreateTimedAction(float duration, DateInfo date)
 	{
-		TimedAction action = new TimedAction (Time.time, duration);
+		TimedAction action = new TimedAction (Time.time, duration, DateTime.Now);
 		timed_actions.Add (action);
 		return action;
 	}
 
-	public static void Update(float delta_time)
+	public static void Update()
 	{
 		foreach (TimedAction timedAction in timed_actions)
 		{
-			timedAction.Update (delta_time);
+			timedAction.delta = DateInfo.TimeElapsedInSeconds (DateTime.Now, timedAction.dateOnCreation);
+			timedAction.Update (timedAction.delta);
 		}	
 	}
 
