@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public class TimedAction
+public abstract class TimedAction
 {
 	private DateTime _time_started;
 	private DateTime _last_date;
@@ -17,6 +17,8 @@ public class TimedAction
 	private long _seria_time_started;
 	[SerializeField]
 	private long _seria_last_date;
+	[SerializeField]
+	private ActionType _actionType;
 
 
     // public accessors
@@ -24,12 +26,13 @@ public class TimedAction
 	public float duration { get { return _duration; } }
 	public float ratio { get { return _action_ratio; } }
 
-	public TimedAction(float duration, DateTime date)
+	public TimedAction(float duration, DateTime date, ActionType actionType)
 	{
 		_time_started = date;
 		_last_date = _time_started;
 		_duration = duration;
 		_action_ratio = 0.0f;
+		_actionType = actionType;
 	}
 
 	public void Update(DateTime new_date)
@@ -51,5 +54,16 @@ public class TimedAction
 		_seria_last_date = this._last_date.ToFileTimeUtc();
 		return JsonUtility.ToJson(this, true); // TODO: Display the content of the string.
 	}
+
+	public void DeserializeDate()
+	{
+		_time_started = DateTime.FromFileTimeUtc (_seria_time_started);
+		_last_date = DateTime.FromFileTimeUtc (_seria_last_date);
+	}
+}
+
+public enum ActionType {
+	MOVE_TO,
+	ATTACK
 }
 

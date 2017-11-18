@@ -8,11 +8,27 @@ public static class TimeManager {
 	private static List<TimedAction> timed_actions = new List<TimedAction>();
 	private static double secondsToAdd;
 
-	public static TimedAction CreateTimedAction(float duration, DateTime date)
+	public static TimedAction CreateTimedAction(float duration, DateTime date, ActionType actionType)
 	{
-		TimedAction action = new TimedAction (duration, date);
-		timed_actions.Add (action);
-		return action;
+		switch (actionType)
+		{
+		case ActionType.MOVE_TO:
+			MoveTo move_to_action = new MoveTo (duration, date, actionType);
+			timed_actions.Add (move_to_action);
+			return move_to_action;
+			break;
+
+		case ActionType.ATTACK:
+			Attack attack_action = new Attack (duration, date, actionType);
+			timed_actions.Add (attack_action);
+			return attack_action;
+			break;
+
+		default:
+			return null;
+			break;
+		}
+
 	}
 
 	public static TimedAction CreateTimedAction(TimedAction existing_action)
@@ -25,6 +41,7 @@ public static class TimeManager {
 	public static TimedAction CreateTimedAction(string timed_action_json)
 	{
 		TimedAction action = JsonUtility.FromJson<TimedAction> (timed_action_json);
+		action.DeserializeDate ();
 		CreateTimedAction (action);
 		return action;
 	}
