@@ -53,17 +53,3 @@ public class TimedAction
 	}
 }
 
-/*
-le plan c'est
-tu as un monobehaviour
-qui contient un timedaction
-ce timedaction tu peux le serialiser maintenant
-donc quand tu vas arreter le jeu
-tu vas parcourir tous tes objets de jeu
-et leur dire "serialize toi doudou"
-ils vont te retourner leur type (unite au sol, ennemis) et vont contenir leur timedaction
-du coup quand tu vas deserialiser tes unites
-tu vas dire "ah, ici j'ai une troupe au sol, ennemie, ok je vais creer un gameobject lui coller le bon component, et lui filer mon objet a deseria, il mettra son timedaction aux bonnes valeur, et je le passe a timemanager pour qu'il lui fasse jouer son ratio"
-voila
-your game, in a nutshell
-/*
