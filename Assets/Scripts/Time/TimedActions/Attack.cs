@@ -12,7 +12,7 @@ public class Attack : TimedAction {
 
 	}
 
-	public void Update(DateTime date)
+	public override void Update(DateTime date)
 	{
 		base.Update (date);
 		//move to city
