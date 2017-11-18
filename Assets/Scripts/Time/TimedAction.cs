@@ -35,7 +35,7 @@ public abstract class TimedAction
 		_actionType = actionType;
 	}
 
-	public void Update(DateTime new_date)
+	public virtual void Update(DateTime new_date)
 	{
 		double delta = MsElapsed(new_date, _last_date);
 		_time_progress += delta / 1000f;

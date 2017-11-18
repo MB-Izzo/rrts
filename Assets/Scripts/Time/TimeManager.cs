@@ -16,17 +16,14 @@ public static class TimeManager {
 			MoveTo move_to_action = new MoveTo (duration, date, actionType);
 			timed_actions.Add (move_to_action);
 			return move_to_action;
-			break;
 
 		case ActionType.ATTACK:
 			Attack attack_action = new Attack (duration, date, actionType);
 			timed_actions.Add (attack_action);
 			return attack_action;
-			break;
 
 		default:
 			return null;
-			break;
 		}
 
 	}
