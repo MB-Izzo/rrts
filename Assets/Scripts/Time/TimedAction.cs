@@ -17,8 +17,6 @@ public abstract class TimedAction
 	private long _seria_time_started;
 	[SerializeField]
 	private long _seria_last_date;
-	[SerializeField]
-	private ActionType _actionType;
 
 
     // public accessors
@@ -26,13 +24,12 @@ public abstract class TimedAction
 	public float duration { get { return _duration; } }
 	public float ratio { get { return _action_ratio; } }
 
-	public TimedAction(float duration, DateTime date, ActionType actionType)
+	public TimedAction(float duration, DateTime date)
 	{
 		_time_started = date;
 		_last_date = _time_started;
 		_duration = duration;
 		_action_ratio = 0.0f;
-		_actionType = actionType;
 	}
 
 	public virtual void Update(DateTime new_date)

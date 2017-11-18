@@ -8,17 +8,18 @@ public static class TimeManager {
 	private static List<TimedAction> timed_actions = new List<TimedAction>();
 	private static double secondsToAdd;
 
-	public static TimedAction CreateTimedAction(float duration, DateTime date, ActionType actionType)
+	// Maybe this should not be a factory?
+	public static TimedAction CreateTimedAction(float duration, DateTime date, string actionType)
 	{
 		switch (actionType)
 		{
-		case ActionType.MOVE_TO:
-			MoveTo move_to_action = new MoveTo (duration, date, actionType);
+		case "MOVE_TO":
+			MoveTo move_to_action = new MoveTo (duration, date);
 			timed_actions.Add (move_to_action);
 			return move_to_action;
 
-		case ActionType.ATTACK:
-			Attack attack_action = new Attack (duration, date, actionType);
+		case "ATTACK":
+			Attack attack_action = new Attack (duration, date);
 			timed_actions.Add (attack_action);
 			return attack_action;
 

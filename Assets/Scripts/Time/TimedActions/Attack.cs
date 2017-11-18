@@ -7,7 +7,7 @@ public class Attack : TimedAction {
 
 	public City target;
 
-	public Attack (float duration, DateTime date, ActionType actionType) : base (duration, date, actionType)
+	public Attack (float duration, DateTime date) : base (duration, date)
 	{
 
 	}

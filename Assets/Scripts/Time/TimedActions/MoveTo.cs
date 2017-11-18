@@ -7,7 +7,7 @@ public class MoveTo : TimedAction {
 
 	public City destination;
 
-	public MoveTo (float duration, DateTime date, ActionType actionType) : base (duration, date, actionType)
+	public MoveTo (float duration, DateTime date) : base (duration, date)
 	{
 		
 	}
