@@ -20,7 +20,7 @@ public class DebuggingManager : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
-		testAction = TimeManager.CreateTimedAction (60, DateTime.Now, "MOVE_TO");
+		testAction = TimedActionFactory.CreateTimedAction (60, DateTime.Now, "MOVE_TO");
 	}
 	
 	// Update is called once per frame

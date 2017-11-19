@@ -30,6 +30,7 @@ public class TimedActionFactory {
 	{
 		TimedAction new_action = existing_action;
 		TimeManager.RegisterTimedAction (new_action);
+		return new_action;
 	}
 
 	public static TimedAction CreateTimedAction(string timed_action_json)
