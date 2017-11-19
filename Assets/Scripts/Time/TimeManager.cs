@@ -5,7 +5,7 @@ using System;
 
 public static class TimeManager {
 
-	private static List<TimedAction> timed_actions = new List<TimedAction>();
+	public static List<TimedAction> timed_actions = new List<TimedAction>();
 	private static double secondsToAdd;
 
 
