@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [System.Serializable]
-public abstract class TimedAction
+public class TimedAction
 {
 	private DateTime _time_started;
 	private DateTime _last_date;

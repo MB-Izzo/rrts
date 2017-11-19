@@ -20,7 +20,10 @@ public class DebuggingManager : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
-		testAction = TimedActionFactory.CreateTimedAction (60, DateTime.Now, "MOVE_TO");
+		testAction = TimedActionFactory.CreateTimedAction (60, DateTime.Now, "MOVE_TO"); // working
+		string seria_action = testAction.SerializeToJSON ();
+		TimedAction deseria_action = TimedActionFactory.CreateTimedAction (seria_action); // not working
+		Debug.Log (deseria_action.time_started);
 	}
 	
 	// Update is called once per frame
@@ -30,6 +33,6 @@ public class DebuggingManager : MonoBehaviour {
 			TimeManager.AddSecondsHack (secondsOnSpace);
 		}
 		TimeManager.Update ();
-        Debug.Log (testAction.SerializeToJSON());
+
 	}
 }
