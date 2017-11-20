@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ClickManager : MonoBehaviour {
 
-	private List<OnClickBehavior> soldiers = new List<OnClickBehavior>();
-
 	private static ClickManager _instance;
 	public static ClickManager Instance { get { return _instance; } }
+
+	private Squad _squad_selected;
+	public Squad squad_selected { get { return _squad_selected; }}
+
+	private OnClickBehavior _squad_selected_clicked_behavior = null;
 
 	// Use this for initialization
 	void Start () {
@@ -38,21 +41,17 @@ public class ClickManager : MonoBehaviour {
 			{
 				if (hits [i].collider.CompareTag ("Soldier"))
 				{
-					OnClickBehavior clicked = hits [i].collider.GetComponent<OnClickBehavior>();
-					clicked.OnSelect();
-					soldiers.Add(clicked);
+					_squad_selected_clicked_behavior = hits [i].collider.GetComponent<OnClickBehavior>();
+					_squad_selected_clicked_behavior.OnSelect();
+					_squad_selected = _squad_selected_clicked_behavior.GetComponent<Squad> ();
 
 				}
 				else
 				{
-					if (soldiers.Count >= 1) 
+					if (squad_selected != null)
 					{
-						foreach(OnClickBehavior c in soldiers)
-						{
-							c.OnDeselect();
-
-						}
-						soldiers.Clear ();
+						_squad_selected_clicked_behavior.OnDeselect ();
+						_squad_selected = null;
 					}
 
 				}
