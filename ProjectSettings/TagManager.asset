@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Map
   - Soldier
+  - attack_button
   layers:
   - Default
   - TransparentFX

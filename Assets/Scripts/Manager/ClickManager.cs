@@ -6,14 +6,27 @@ public class ClickManager : MonoBehaviour {
 
 	private List<OnClickBehavior> soldiers = new List<OnClickBehavior>();
 
+	private static ClickManager _instance;
+	public static ClickManager Instance { get { return _instance; } }
+
 	// Use this for initialization
 	void Start () {
+		if (_instance != null && _instance != this)
+		{
+			Destroy (this.gameObject);
+		}
+		else
+		{
+			_instance = this;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		OnClick ();
 	}
+
+
 
 	private void OnClick()
 	{
@@ -46,5 +59,5 @@ public class ClickManager : MonoBehaviour {
 			}
 		}
 
-	} 
+	}
 }

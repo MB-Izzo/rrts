@@ -24,22 +24,8 @@ public class Squad : MonoBehaviour {
 	public string destination_name { get; private set; }
 	public float speed_km { get { return _speed_km; } }
 
-	// SHOULD NOT BE HERE!
-	/*private SpriteRenderer _sprite;
-	public Sprite on_selected_sprite;
-	private Sprite _default_sprite;
-	private bool _isSelected;
-	public GameObject unit_panel;
-	public Text destination_text;
-	public Text time_remaining_text;
-	public Text speed_text;
-	private string _destination_name;*/
-
-	// Use this for initialization
 	void Start () {
 		destination_name = "Bastia";
-		//_sprite = GetComponent<SpriteRenderer> ();
-		//_default_sprite = _sprite.sprite;
 		_speed_km = speed * 10;
 		_start_pos = new Vector2 (transform.position.x, transform.position.y);
 		_destination_pos = new Vector2 (destination.transform.position.x, destination.transform.position.y);
@@ -58,51 +44,12 @@ public class Squad : MonoBehaviour {
 	
 	void Update () {
 		TimeManager.Update ();
-		transform.position = Vector2.Lerp(_start_pos, _destination_pos, _travel_action.ratio);
-
-		/* Should not be here.
-		TimeSpan span = TimeSpan.FromSeconds (_travel_action.time_remaining);
-		int minutes = span.Minutes;
-		OnClick ();
-		if (_isSelected)
-		{
-			unit_panel.SetActive (true);
-			speed_text.text = "Speed: " + _speed_km + "km/h";
-			destination_text.text = "Going to: " + _destination_name;
-			time_remaining_text.text = "Time remaining: " + minutes + " minutes";
-
-		}
-		else
-		{
-			unit_panel.SetActive (false);
-		}
-		*/
 	}
-		
-	// should not be here.
-	/*
-	void OnClick()
+
+	public void MoveTo(Vector2 start_pos, Vector2 destination_pos, float action_ratio)
 	{
-		if (Input.GetMouseButtonDown (0))
-		{
-			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll (ray);
-			for (int i = 0; i < hits.Length; i++)
-			{
-				if (hits [i].collider.CompareTag ("Soldier"))
-				{
-					_sprite.sprite = on_selected_sprite;
-					_isSelected = true;
+		transform.position = Vector2.Lerp(start_pos, destination_pos, action_ratio);
+	}
 
-				}
-				else
-				{
-					_sprite.sprite = _default_sprite;
-					_isSelected = false;
-				}
-			}
-		}
-
-	} */
 }
 
