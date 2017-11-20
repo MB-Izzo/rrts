@@ -20,14 +20,8 @@ public class AttackManager : MonoBehaviour {
 				btn.gameObject.SetActive (true);
 			}
 		}
-		else
-		{
-			// default state
-			foreach (AttackButton btn in _attack_buttons)
-			{
-				btn.gameObject.SetActive (false);
-			}
-		}
+
+
 	}
 
 	private bool AttackState()

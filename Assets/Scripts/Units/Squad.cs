@@ -32,7 +32,6 @@ public class Squad : MonoBehaviour {
 		_distance = Vector2.Distance (_start_pos, _destination_pos); // 20Km = 2units.
 		_travel_time = _distance / speed; // give travel_time in hour.
 		_travel_time_seconds = _travel_time * 3600f;
-		speed = speed * (1/3600f); // convert to speed/s. (to use with delta)
 		_travel_action = TimedActionFactory.CreateTimedAction(_travel_time_seconds, DateTime.Now);
 
 

@@ -46,7 +46,7 @@ public class ClickManager : MonoBehaviour {
 					_squad_selected = _squad_selected_clicked_behavior.GetComponent<Squad> ();
 
 				}
-				else
+				/*else
 				{
 					if (squad_selected != null)
 					{
@@ -54,7 +54,7 @@ public class ClickManager : MonoBehaviour {
 						_squad_selected = null;
 					}
 
-				}
+				}*/
 			}
 		}
 
