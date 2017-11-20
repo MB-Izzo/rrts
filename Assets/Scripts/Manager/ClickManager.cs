@@ -11,6 +11,8 @@ public class ClickManager : MonoBehaviour {
 	public Squad squad_selected { get { return _squad_selected; }}
 
 	private OnClickBehavior _squad_selected_clicked_behavior = null;
+	public delegate Squad OnSquadSelected();
+	public event OnSquadSelected onSquadSelected;
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +46,10 @@ public class ClickManager : MonoBehaviour {
 					_squad_selected_clicked_behavior = hits [i].collider.GetComponent<OnClickBehavior>();
 					_squad_selected_clicked_behavior.OnSelect();
 					_squad_selected = _squad_selected_clicked_behavior.GetComponent<Squad> ();
+					if (onSquadSelected != null)
+					{
+						onSquadSelected ();
+					}
 
 				}
 				/*else
