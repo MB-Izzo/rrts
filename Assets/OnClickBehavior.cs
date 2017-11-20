@@ -28,7 +28,7 @@ public class OnClickBehavior : MonoBehaviour {
 		show = true;
 		if (updateUI != null)
 		{
-			updateUI (squad.speed_km, squad.destination_name, squad.traval_time, squad.squad_name, show);
+			updateUI (squad.speed_km, squad.destination_name, squad.traval_time, squad.squad_name, true);
 		}
 		_renderer.sprite = selected_sprite;
 		is_selected = true;
@@ -39,7 +39,7 @@ public class OnClickBehavior : MonoBehaviour {
 		show = false;
 		if (updateUI != null)
 		{
-			updateUI (squad.speed_km, squad.destination_name, squad.traval_time, squad.squad_name, show);
+			updateUI (squad.speed_km, squad.destination_name, squad.traval_time, squad.squad_name, false);
 		}
 		_renderer.sprite = _default_sprite;
 		is_selected = false;

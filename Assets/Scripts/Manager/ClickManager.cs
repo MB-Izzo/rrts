@@ -32,10 +32,15 @@ public class ClickManager : MonoBehaviour {
 				}
 				else
 				{
-					foreach(OnClickBehavior c in soldiers)
+					if (soldiers.Count >= 1) 
 					{
-						c.OnDeselect();
+						foreach(OnClickBehavior c in soldiers)
+						{
+							c.OnDeselect();
+							soldiers.Remove (c);
+						}
 					}
+
 				}
 			}
 		}
