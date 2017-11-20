@@ -37,8 +37,9 @@ public class ClickManager : MonoBehaviour {
 						foreach(OnClickBehavior c in soldiers)
 						{
 							c.OnDeselect();
-							soldiers.Remove (c);
+
 						}
+						soldiers.Clear ();
 					}
 
 				}
