@@ -10,6 +10,7 @@ public class TimedAction
 	private DateTime _last_date;
 	private float _action_ratio;
 	private double _time_progress;
+	private double _time_remaining;
 
 	[SerializeField]
 	private float _duration;
@@ -23,6 +24,7 @@ public class TimedAction
 	public DateTime time_started { get { return _time_started; } }
 	public float duration { get { return _duration; } }
 	public float ratio { get { return _action_ratio; } }
+	public double time_remaining { get { return _time_remaining; } }
 
 	public TimedAction(float duration, DateTime date)
 	{
@@ -30,12 +32,14 @@ public class TimedAction
 		_last_date = _time_started;
 		_duration = duration;
 		_action_ratio = 0.0f;
+		_time_remaining = duration;
 	}
 
 	public virtual void Update(DateTime new_date)
 	{
 		double delta = MsElapsed(new_date, _last_date);
 		_time_progress += delta / 1000f;
+		_time_remaining -= delta / 1000f;
 		_action_ratio = Mathf.Min((float)_time_progress / _duration, 1f);
 		_last_date = new_date;
 	}
@@ -56,6 +60,11 @@ public class TimedAction
 	{
 		_time_started = DateTime.FromFileTimeUtc (_seria_time_started);
 		_last_date = DateTime.FromFileTimeUtc (_seria_last_date);
+	}
+
+	public bool IsFinished()
+	{
+		return _action_ratio == 1;
 	}
 }
 

@@ -20,7 +20,7 @@ public class DebuggingManager : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
-		testAction = TimedActionFactory.CreateTimedAction (60, DateTime.Now, "MOVE_TO"); // working
+		testAction = TimedActionFactory.CreateTimedAction (60, DateTime.Now); // working
 		string seria_action = testAction.SerializeToJSON ();
 		TimedAction deseria_action = TimedActionFactory.CreateTimedAction (seria_action); // not working
 		TimedActionFactory.CreateTimedAction(deseria_action);
@@ -33,6 +33,7 @@ public class DebuggingManager : MonoBehaviour {
 			TimeManager.AddSecondsHack (secondsOnSpace);
 		}
 		TimeManager.Update ();
-		Debug.Log (TimeManager.timed_actions);
+		//Debug.Log (TimeManager.timed_actions);
+
 	}
 }

@@ -5,24 +5,10 @@ using System;
 
 public class TimedActionFactory {
 
-	public static TimedAction CreateTimedAction(float duration, DateTime date, string action_type)
+	public static TimedAction CreateTimedAction(float duration, DateTime date)
 	{
-		TimedAction new_action = null;
-		switch (action_type)
-		{
-		case "MOVE_TO":
-			new_action = new MoveTo (duration, date);
-			break;
-		case "ATTACK":
-			new_action = new Attack(duration, date);
-			break;
-		default:
-			break;
-		}
-		if (new_action != null)
-		{
-			TimeManager.RegisterTimedAction (new_action);
-		}
+		TimedAction new_action = new TimedAction(duration, date);
+		TimeManager.RegisterTimedAction (new_action);
 		return new_action;
 	}
 
