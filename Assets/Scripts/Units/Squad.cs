@@ -16,7 +16,9 @@ public class Squad : MonoBehaviour {
 	private float _travel_time_seconds;
 	private Unit[] _units;
 	private TimedAction _travel_action;
-	private SpriteRenderer _sprite;
+
+	// SHOULD NOT BE HERE!
+	/*private SpriteRenderer _sprite;
 	public Sprite on_selected_sprite;
 	private Sprite _default_sprite;
 	private bool _isSelected;
@@ -24,12 +26,12 @@ public class Squad : MonoBehaviour {
 	public Text destination_text;
 	public Text time_remaining_text;
 	public Text speed_text;
-	private string _destination_name;
+	private string _destination_name;*/
 
 	// Use this for initialization
 	void Start () {
-		_sprite = GetComponent<SpriteRenderer> ();
-		_default_sprite = _sprite.sprite;
+		//_sprite = GetComponent<SpriteRenderer> ();
+		//_default_sprite = _sprite.sprite;
 		_speed_km = speed * 10;
 		_start_pos = new Vector2 (transform.position.x, transform.position.y);
 		_destination_pos = new Vector2 (destination.transform.position.x, destination.transform.position.y);
@@ -39,18 +41,18 @@ public class Squad : MonoBehaviour {
 		speed = speed * (1/3600f); // convert to speed/s. (to use with delta)
 		_travel_action = TimedActionFactory.CreateTimedAction(_travel_time_seconds, DateTime.Now);
 
-		float travel_time_minutes = _travel_time * 60;
 
+		// For debugging purposes.
 		Debug.Log ("Travel distance: " + _distance * 10 + "km.");
 		Debug.Log ("Speed: " + _speed_km + "km/h");
 		Debug.Log ("Travel time: " + TimeLib.HoursToSpan(_travel_time));
-		_destination_name = destination.gameObject.name;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		TimeManager.Update ();
 		transform.position = Vector2.Lerp(_start_pos, _destination_pos, _travel_action.ratio);
+
+		/* Should not be here.
 		TimeSpan span = TimeSpan.FromSeconds (_travel_action.time_remaining);
 		int minutes = span.Minutes;
 		OnClick ();
@@ -66,10 +68,11 @@ public class Squad : MonoBehaviour {
 		{
 			unit_panel.SetActive (false);
 		}
+		*/
 	}
-
-
-
+		
+	// should not be here.
+	/*
 	void OnClick()
 	{
 		if (Input.GetMouseButtonDown (0))
@@ -92,6 +95,6 @@ public class Squad : MonoBehaviour {
 			}
 		}
 
-	}
+	} */
 }
 
