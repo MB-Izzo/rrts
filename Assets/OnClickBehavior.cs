@@ -14,6 +14,8 @@ public class OnClickBehavior : MonoBehaviour {
 
 	private Squad squad;
 
+	private static bool show;
+
 	// Use this for initialization
 	void Start () {
 		squad = GetComponent<Squad> ();
@@ -23,9 +25,10 @@ public class OnClickBehavior : MonoBehaviour {
 
 	public void OnSelect()
 	{
+		show = true;
 		if (updateUI != null)
 		{
-			updateUI (squad.speed_km, squad.destination_name, squad.traval_time, squad.squad_name, true);
+			updateUI (squad.speed_km, squad.destination_name, squad.traval_time, squad.squad_name, show);
 		}
 		_renderer.sprite = selected_sprite;
 		is_selected = true;
@@ -33,9 +36,10 @@ public class OnClickBehavior : MonoBehaviour {
 
 	public void OnDeselect()
 	{
+		show = false;
 		if (updateUI != null)
 		{
-			updateUI (squad.speed_km, squad.destination_name, squad.traval_time, squad.squad_name, false);
+			updateUI (squad.speed_km, squad.destination_name, squad.traval_time, squad.squad_name, show);
 		}
 		_renderer.sprite = _default_sprite;
 		is_selected = false;

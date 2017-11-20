@@ -10,10 +10,11 @@ public class UISquadInfo : MonoBehaviour {
 	public Text destination;
 	public Text travel_time;
 	public Text squad_name;
+	private Animator _animator;
 
 	// Use this for initialization
 	void Start () {
-		
+		_animator = panel.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -35,11 +36,11 @@ public class UISquadInfo : MonoBehaviour {
 	{
 		if (show)
 		{
-			this.panel.SetActive (true);
+			_animator.SetTrigger ("Open");
 		}
 		else
 		{
-			this.panel.SetActive (false);
+			_animator.SetTrigger ("Closed");
 		}
 		this.speed.text = "Speed: " + speed + "km/h";
 		this.destination.text = "Destination: " + destination + ".";
