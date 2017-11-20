@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 313687875}
   - component: {fileID: 313687877}
   - component: {fileID: 313687878}
+  - component: {fileID: 313687879}
   m_Layer: 0
   m_Name: Unit player
   m_TagString: Soldier
@@ -524,11 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   destination: {fileID: 198297174}
-  on_selected_sprite: {fileID: 21300000, guid: d5007efcdf265874ead6a3a85860f363, type: 3}
-  unit_panel: {fileID: 1409491398}
-  destination_text: {fileID: 1248279060}
-  time_remaining_text: {fileID: 653791413}
-  speed_text: {fileID: 302450384}
+  squad_name: Squad 1
 --- !u!61 &313687878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -554,6 +551,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3333334, y: 1.3333334}
   m_EdgeRadius: 0
+--- !u!114 &313687879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 313687874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f05285d434bdac468b9776213537c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected_sprite: {fileID: 21300000, guid: d5007efcdf265874ead6a3a85860f363, type: 3}
 --- !u!1 &653791411
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +840,51 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1020638212}
+--- !u!1 &1044670468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1044670470}
+  - component: {fileID: 1044670469}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1044670469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1044670468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8185084ff01d5d34c964ba51eec7b6bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1409491398}
+  speed: {fileID: 302450384}
+  destination: {fileID: 1248279060}
+  travel_time: {fileID: 653791413}
+  squad_name: {fileID: 1020638214}
+--- !u!4 &1044670470
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1044670468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.097, y: 7.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055685995
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,8 +912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf2f4b25914b414784f417e35f3188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _default_sprite: {fileID: 21300000, guid: 7b18fda0d7eb38e49b7672a0d1491c22, type: 3}
-  _selected_sprite: {fileID: 21300000, guid: d5007efcdf265874ead6a3a85860f363, type: 3}
 --- !u!4 &1055685997
 Transform:
   m_ObjectHideFlags: 0
@@ -963,7 +1015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1409491399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1180,6 +1232,7 @@ GameObject:
   - component: {fileID: 2002524302}
   - component: {fileID: 2002524301}
   - component: {fileID: 2002524300}
+  - component: {fileID: 2002524304}
   m_Layer: 0
   m_Name: Unit player (1)
   m_TagString: Soldier
@@ -1225,11 +1278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   destination: {fileID: 198297174}
-  on_selected_sprite: {fileID: 21300000, guid: d5007efcdf265874ead6a3a85860f363, type: 3}
-  unit_panel: {fileID: 1409491398}
-  destination_text: {fileID: 1248279060}
-  time_remaining_text: {fileID: 653791413}
-  speed_text: {fileID: 302450384}
+  squad_name: Squad 2
 --- !u!212 &2002524302
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1285,6 +1334,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2002524304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002524299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f05285d434bdac468b9776213537c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected_sprite: {fileID: 21300000, guid: d5007efcdf265874ead6a3a85860f363, type: 3}
 --- !u!1 &2013861663
 GameObject:
   m_ObjectHideFlags: 0

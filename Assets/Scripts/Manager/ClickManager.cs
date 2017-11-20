@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class ClickManager : MonoBehaviour {
 
-	private SpriteRenderer _renderer_selected;
-	public Sprite _default_sprite;
-	public Sprite _selected_sprite;
-	private Squad _selected_squad;
+	private List<OnClickBehavior> soldiers = new List<OnClickBehavior>();
 
 	// Use this for initialization
 	void Start () {
@@ -28,16 +25,16 @@ public class ClickManager : MonoBehaviour {
 			{
 				if (hits [i].collider.CompareTag ("Soldier"))
 				{
-					_renderer_selected = hits [i].collider.GetComponent<SpriteRenderer> ();
-					_renderer_selected.sprite = _selected_sprite;
-					_selected_squad = hits [i].collider.GetComponent<Squad> ();
+					OnClickBehavior clicked = hits [i].collider.GetComponent<OnClickBehavior>();
+					clicked.OnSelect();
+					soldiers.Add(clicked);
+
 				}
 				else
 				{
-					if (_renderer_selected != null)
+					foreach(OnClickBehavior c in soldiers)
 					{
-						_renderer_selected.sprite = _default_sprite;
-						_selected_squad = null;
+						c.OnDeselect();
 					}
 				}
 			}

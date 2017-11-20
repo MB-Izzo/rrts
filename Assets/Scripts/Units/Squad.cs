@@ -16,6 +16,13 @@ public class Squad : MonoBehaviour {
 	private float _travel_time_seconds;
 	private Unit[] _units;
 	private TimedAction _travel_action;
+	private string _squad_name;
+
+	// accessors
+	public string squad_name;
+	public float traval_time { get { return _travel_time; } }
+	public string destination_name { get; private set; }
+	public float speed_km { get { return _speed_km; } }
 
 	// SHOULD NOT BE HERE!
 	/*private SpriteRenderer _sprite;
@@ -30,6 +37,7 @@ public class Squad : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		destination_name = "Bastia";
 		//_sprite = GetComponent<SpriteRenderer> ();
 		//_default_sprite = _sprite.sprite;
 		_speed_km = speed * 10;
